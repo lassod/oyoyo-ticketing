@@ -2,8 +2,6 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
-import Add from "../../app/components/assets/images/add-button-red.svg";
-import Gallery from "../../app/components/assets/images/gallery-add.svg";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { XCircle } from "lucide-react";
@@ -78,103 +76,4 @@ const AddButtonContainer = React.forwardRef<
 ));
 AddButtonContainer.displayName = "AddButtonContainer";
 
-const AddButton = ({
-  title,
-  onFileChange,
-  isMultiple = false,
-  type = 1,
-}: any) => {
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (isMultiple) {
-      if (event.target.files && event.target.files.length > 0) {
-        const files = Array.from(event.target.files); // Convert FileList to an array
-        onFileChange(files); // Pass the files array to the parent
-      }
-    } else {
-      if (event.target.files && event.target.files.length > 0) {
-        const file = event.target.files[0];
-        onFileChange(file);
-      }
-    }
-  };
-
-  return (
-    <>
-      {type === 1 ? (
-        <label className="flex gap-4 items-center overflow-hidden cursor-pointer">
-          <input
-            className="hidden"
-            type="file"
-            multiple
-            accept="image/png, image/jpeg, image/gif"
-            name="image"
-            onChange={handleFileChange}
-          />
-          <Image src={Add} alt="Add" />
-          <p className=" text-red-700 hover:text-black">{title}</p>
-        </label>
-      ) : (
-        <label className="bg-red-100 flex flex-col px-3 py-8 hover:bg-red-50 hover:border-solid rounded-xl border border-dashed max-w-[150px] border-red-700 gap-2 items-center overflow-hidden cursor-pointer">
-          <input
-            className="hidden"
-            type="file"
-            multiple
-            accept="image/png, image/jpeg, image/gif"
-            name="image"
-            onChange={handleFileChange}
-          />
-          <Image src={Gallery} alt="Photo" />
-          <p className=" text-red-700 hover:text-black">{title}</p>
-        </label>
-      )}
-    </>
-  );
-};
-
-const FileDisplay = ({ files, file, onRemove, isMultiple = false }: any) => {
-  return (
-    <>
-      {isMultiple ? (
-        <div className="flex gap-2 flex-wrap">
-          {files.map((file: any, index: number) => (
-            <div key={index} className="relative">
-              <XCircle
-                onClick={() => onRemove(index)}
-                className="h-5 w-5 absolute top-1 left-1 text-red-700 cursor-pointer"
-              />
-              <Image
-                src={
-                  typeof file === "string" ? file : URL.createObjectURL(file)
-                }
-                alt={`file-preview-${index}`}
-                width={110}
-                height={110}
-                className="max-w-[110px] rounded-md h-[110px] object-cover"
-              />
-            </div>
-          ))}
-        </div>
-      ) : (
-        <>
-          {file && (
-            <div className="flex relative gap-2 flex-wrap">
-              <XCircle
-                onClick={() => onRemove()}
-                className="h-5 w-5 absolute top-1 left-1 text-red-700 cursor-pointer"
-              />
-              <Image
-                src={file && URL.createObjectURL(file)}
-                alt={`file-preview`}
-                width={110}
-                height={110}
-                className="max-w-[110px] rounded-md h-[110px] object-cover"
-              />
-            </div>
-          )}
-        </>
-      )}
-    </>
-  );
-};
-
-export { Button, AddButtonContainer, AddButton, FileDisplay, buttonVariants };
+export { Button, AddButtonContainer, buttonVariants };

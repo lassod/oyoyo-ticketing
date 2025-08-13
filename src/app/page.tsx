@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import MuxPlayer from "@mux/mux-player-react";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -442,9 +443,7 @@ export default function Home() {
             </p>
           </div>
           <div id="Start" className="flex-shrink-0">
-            <button className="mt-2 md:inline whitespace-nowrap rounded-[10px] text-sm font-medium bg-red hover:bg-black transition-colors px-8 sm:px-6 py-4">
-              Create an Account
-            </button>
+            <Button variant="secondary">Create an Account</Button>
           </div>
         </div>
       </section>
