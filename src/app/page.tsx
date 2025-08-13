@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-// import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import MuxPlayer from "@mux/mux-player-react";
 
@@ -26,10 +25,10 @@ export default function Home() {
   const [isHeroVisible, setIsHeroVisible] = useState(false);
   const [isCTAVisible, setIsCTAVisible] = useState(false);
 
-  const heroParagraphRef = useRef<HTMLParagraphElement>(null);
-  const featureParagraphRef = useRef<HTMLParagraphElement>(null);
-  const worksParagraphRef = useRef<HTMLParagraphElement>(null);
-  const ctaParagraphRef = useRef<HTMLParagraphElement>(null);
+  const heroParagraphRef = useRef<any>(null);
+  const featureParagraphRef = useRef<any>(null); // observe grid container
+  const worksParagraphRef = useRef<any>(null); // observe list container
+  const ctaParagraphRef = useRef<any>(null); // observe CTA text container
 
   // Reusable observer function
   function useObserver(
