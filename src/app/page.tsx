@@ -25,37 +25,37 @@ export default function Home() {
   const [isHeroVisible, setIsHeroVisible] = useState(false);
   const [isCTAVisible, setIsCTAVisible] = useState(false);
 
-  const heroParagraphRef = useRef<any>(null);
-  const featureParagraphRef = useRef<any>(null); // observe grid container
-  const worksParagraphRef = useRef<any>(null); // observe list container
-  const ctaParagraphRef = useRef<any>(null); // observe CTA text container
+  // const heroParagraphRef = useRef<HTMLParagraphElement>(null);
+  // const featureParagraphRef = useRef<HTMLParagraphElement>(null);
+  // const worksParagraphRef = useRef<HTMLParagraphElement>(null);
+  // const ctaParagraphRef = useRef<HTMLParagraphElement>(null);
 
   // Reusable observer function
-  function useObserver(
-    ref: React.RefObject<HTMLElement>,
-    setState: React.Dispatch<React.SetStateAction<boolean>>
-  ) {
-    useEffect(() => {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          const [entry] = entries;
-          setState(entry.isIntersecting);
-        },
-        { threshold: 0.2 }
-      );
+  // function useObserver(
+  //   ref: React.RefObject<HTMLElement>,
+  //   setState: React.Dispatch<React.SetStateAction<boolean>>
+  // ) {
+  //   useEffect(() => {
+  //     const observer = new IntersectionObserver(
+  //       (entries) => {
+  //         const [entry] = entries;
+  //         setState(entry.isIntersecting);
+  //       },
+  //       { threshold: 0.2 }
+  //     );
 
-      if (ref.current) observer.observe(ref.current);
-      return () => {
-        if (ref.current) observer.unobserve(ref.current);
-      };
-    }, [ref, setState]);
-  }
+  //     if (ref.current) observer.observe(ref.current);
+  //     return () => {
+  //       if (ref.current) observer.unobserve(ref.current);
+  //     };
+  //   }, [ref, setState]);
+  // }
 
-  // Attach observers
-  useObserver(heroParagraphRef, setIsHeroVisible);
-  useObserver(featureParagraphRef, setIsFeatureVisible);
-  useObserver(worksParagraphRef, setIsWorksVisible);
-  useObserver(ctaParagraphRef, setIsCTAVisible);
+  // // Attach observers
+  // useObserver(heroParagraphRef, setIsHeroVisible);
+  // useObserver(featureParagraphRef, setIsFeatureVisible);
+  // useObserver(worksParagraphRef, setIsWorksVisible);
+  // useObserver(ctaParagraphRef, setIsCTAVisible);
 
   const testimonials = [
     {
@@ -213,18 +213,11 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="flex flex-col items-center text-center px-6 py-16">
-        <h1 className="text-4xl md:text-5xl font-semibold max-w-4xl">
+        <h1 className="text-4xl md:text-5xl text-center font-semibold max-w-4xl">
           List Your Next Event and Sell Tickets with Oyoyo Events App Today!
         </h1>
 
-        <p
-          ref={heroParagraphRef}
-          className={`relative w-full max-w-xl overflow-hidden mt-4 transition-all duration-700 ease-out ${
-            isHeroVisible
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-6"
-          }`}
-        >
+        <p className="relative w-full max-w-xl overflow-hidden mt-4 transition-all duration-700 ease-out">
           For every event — from concerts, festivals, and exhibitions to
           webinars, trade shows, weddings, conferences, and parties — Oyoyo App
           makes event planning and ticketing easy.
@@ -304,14 +297,7 @@ export default function Home() {
                 className="rounded-sm mb-4"
               />
               <h3 className="font-semibold text-lg mb-2">{title}</h3>
-              <p
-                ref={featureParagraphRef}
-                className={`text-gray-600 mt-2 transition-all duration-700 ease-out ${
-                  isFeatureVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-6"
-                }`}
-              >
+              <p className="text-gray-600 mt-2 transition-all duration-700 ease-out">
                 {desc}
               </p>
             </div>
@@ -386,12 +372,7 @@ export default function Home() {
               <li className="flex items-center gap-3">
                 <Image src="/tick.png" alt="tick" width={28} height={28} />
                 <p
-                  ref={worksParagraphRef}
-                  className={`text-gray-600 mt-2 transition-all duration-700 ease-out ${
-                    isWorksVisible
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-6"
-                  }`}
+                  className={`text-gray-600 mt-2 transition-all duration-700 ease-out`}
                 >
                   Create Your Free Account
                 </p>
@@ -399,12 +380,8 @@ export default function Home() {
               <li className="flex items-center gap-3">
                 <Image src="/tick.png" alt="tick" width={28} height={28} />
                 <p
-                  ref={worksParagraphRef}
-                  className={`text-gray-600 mt-2 transition-all duration-700 ease-out ${
-                    isWorksVisible
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-6"
-                  }`}
+                  // ref={worksParagraphRef}
+                  className={`text-gray-600 mt-2 transition-all duration-700 ease-out`}
                 >
                   List Your Event &amp; Set Ticket Price
                 </p>
@@ -412,12 +389,8 @@ export default function Home() {
               <li className="flex items-center gap-3">
                 <Image src="/tick.png" alt="tick" width={28} height={28} />
                 <p
-                  ref={worksParagraphRef}
-                  className={`text-gray-600 mt-2 transition-all duration-700 ease-out ${
-                    isWorksVisible
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-6"
-                  }`}
+                  // ref={worksParagraphRef}
+                  className={`text-gray-600 mt-2 transition-all duration-700 ease-out`}
                 >
                   Start Selling &amp; Track Attendance Easily
                 </p>
@@ -425,12 +398,8 @@ export default function Home() {
               <li className="flex items-center gap-3">
                 <Image src="/tick.png" alt="tick" width={28} height={28} />
                 <p
-                  ref={worksParagraphRef}
-                  className={`text-gray-600 mt-2 transition-all duration-700 ease-out ${
-                    isWorksVisible
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-6"
-                  }`}
+                  // ref={worksParagraphRef}
+                  className={`text-gray-600 mt-2 transition-all duration-700 ease-out`}
                 >
                   Host Your Event with Full Support
                 </p>
@@ -460,22 +429,14 @@ export default function Home() {
               Ready to Launch Your Event the Smart Way?
             </h2>
             <p
-              ref={ctaParagraphRef}
-              className={`text-white mt-2 transition-all duration-700 ease-out ${
-                isCTAVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-6"
-              }`}
+              // ref={ctaParagraphRef}
+              className={`text-white mt-2 transition-all duration-700 ease-out`}
             >
               Don&apos;t just host an event — own it with Oyoyo Events App.
             </p>
             <p
-              ref={ctaParagraphRef}
-              className={`text-white mt-2 transition-all duration-700 ease-out ${
-                isCTAVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-6"
-              }`}
+              // ref={ctaParagraphRef}
+              className={`text-white mt-2 transition-all duration-700 ease-out`}
             >
               No hidden fees | No stress | Just success.
             </p>
@@ -493,13 +454,13 @@ export default function Home() {
         <div className="max-w-screen-xl px-4 py-10 mx-auto">
           <div className="grid sm:grid-cols-[1fr,auto] gap-8 sm:gap-11 justify-between items-center">
             <div className="flex flex-col gap-8">
-              <img
+              <Image
                 alt="Oyoyo Logo"
                 loading="lazy"
                 width={78}
                 height={36}
                 decoding="async"
-                src="oyoyo2.png"
+                src="/oyoyo2.png"
                 style={{ color: "transparent" }}
               />
               <div>
@@ -548,13 +509,13 @@ export default function Home() {
                     rel="noopener noreferrer"
                     href="https://apps.apple.com/zm/app/oyoyo-event/id6447293031"
                   >
-                    <img
+                    <Image
                       alt="Appstore"
                       loading="lazy"
                       width={135}
                       height={40}
                       decoding="async"
-                      src="appstore.png"
+                      src="/appstore.png"
                       style={{ color: "transparent" }}
                     />
                   </a>
@@ -573,13 +534,13 @@ export default function Home() {
                     rel="noopener noreferrer"
                     href="https://play.google.com/store/apps/details?id=com.lassod.oyoyoevents&hl=vn"
                   >
-                    <img
+                    <Image
                       alt="Googlestore"
                       loading="lazy"
                       width={135}
                       height={40}
                       decoding="async"
-                      src="googleplay.png"
+                      src="/googleplay.png"
                       style={{ color: "transparent" }}
                     />
                   </a>
