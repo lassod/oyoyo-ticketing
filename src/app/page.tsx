@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+// import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import MuxPlayer from "@mux/mux-player-react";
 
@@ -32,7 +33,9 @@ export default function Home() {
 
   // Reusable observer function
   function useObserver(
-  ref: React.RefObject<HTMLElement>, setState: React.Dispatch<React.SetStateAction<boolean>>) {
+    ref: React.RefObject<HTMLElement>,
+    setState: React.Dispatch<React.SetStateAction<boolean>>
+  ) {
     useEffect(() => {
       const observer = new IntersectionObserver(
         (entries) => {
@@ -47,7 +50,7 @@ export default function Home() {
         if (ref.current) observer.unobserve(ref.current);
       };
     }, [ref, setState]);
-  };
+  }
 
   // Attach observers
   useObserver(heroParagraphRef, setIsHeroVisible);
@@ -56,22 +59,22 @@ export default function Home() {
   useObserver(ctaParagraphRef, setIsCTAVisible);
 
   const testimonials = [
-  {
-    quote: `Oyoyo made selling tickets for my private comedy show so easy, I even got a DJ and caterer through the app!`,
-    name: "Mike O.",
-    role: "Event host",
-    starsSrc: "/stars.png",
-    profileSrc: "/profile.png",
-    bigPicSrc: "/big pic.png",
-  },
-  {
-    quote: `This platform made event planning a breeze and boosted my ticket sales!`,
-    name: "Sarah K.",
-    role: "Concert Organizer",
-    starsSrc: "/stars.png",
-    profileSrc: "/profile2.jpg",
-    bigPicSrc: "/big pic.png",
-  },
+    {
+      quote: `Oyoyo made selling tickets for my private comedy show so easy, I even got a DJ and caterer through the app!`,
+      name: "Mike O.",
+      role: "Event host",
+      starsSrc: "/stars.png",
+      profileSrc: "/profile.png",
+      bigPicSrc: "/big pic.png",
+    },
+    {
+      quote: `This platform made event planning a breeze and boosted my ticket sales!`,
+      name: "Sarah K.",
+      role: "Concert Organizer",
+      starsSrc: "/stars.png",
+      profileSrc: "/profile2.jpg",
+      bigPicSrc: "/big pic.png",
+    },
   ];
 
   const current = testimonials[currentIndex];
@@ -93,18 +96,23 @@ export default function Home() {
             <a className="hover:text-red-800 transition-colors" href="/">
               Home
             </a>
-            <a className="hover:text-red-800 transition-colors" href="#features">
+            <a
+              className="hover:text-red-800 transition-colors"
+              href="#features"
+            >
               Features
             </a>
             <a
-              className="hover:text-red-800 transition-colors" href="#Testimonials"
+              className="hover:text-red-800 transition-colors"
+              href="#Testimonials"
             >
               Testimonials
             </a>
           </nav>
 
           {/* Desktop Button */}
-          <button className="hidden md:inline whitespace-nowrap rounded-[30px] text-sm font-medium bg-red-700 text-white hover:bg-black transition-colors px-4 sm:px-6 py-2"><a href="#Start"></a>
+          <button className="hidden md:inline whitespace-nowrap rounded-[30px] text-sm font-medium bg-red-700 text-white hover:bg-black transition-colors px-4 sm:px-6 py-2">
+            <a href="#Start"></a>
             Get Started
           </button>
 
@@ -189,9 +197,9 @@ export default function Home() {
 
           <button
             onClick={() => setMenuOpen(false)}
-            className="mt-6 whitespace-nowrap rounded-[30px] text-sm font-medium bg-red-700 text-white hover:bg-black transition-colors px-4 sm:px-6 py-2"><a href="#Start">
-            Get Started
-            </a>
+            className="mt-6 whitespace-nowrap rounded-[30px] text-sm font-medium bg-red-700 text-white hover:bg-black transition-colors px-4 sm:px-6 py-2"
+          >
+            <a href="#Start">Get Started</a>
           </button>
         </nav>
       </div>
@@ -204,42 +212,45 @@ export default function Home() {
         />
       )}
 
-
       {/* Hero Section */}
       <section className="flex flex-col items-center text-center px-6 py-16">
-      <h1 className="text-4xl md:text-5xl font-semibold max-w-4xl">
-        List Your Next Event and Sell Tickets with Oyoyo Events App Today!
-      </h1>
+        <h1 className="text-4xl md:text-5xl font-semibold max-w-4xl">
+          List Your Next Event and Sell Tickets with Oyoyo Events App Today!
+        </h1>
 
-      <p
-        ref={heroParagraphRef}
-        className={`relative w-full max-w-xl overflow-hidden mt-4 transition-all duration-700 ease-out ${
-          isHeroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-        }`}
-      >
-        For every event — from concerts, festivals, and exhibitions to
-        webinars, trade shows, weddings, conferences, and parties — Oyoyo
-        App makes event planning and ticketing easy.
-      </p>
+        <p
+          ref={heroParagraphRef}
+          className={`relative w-full max-w-xl overflow-hidden mt-4 transition-all duration-700 ease-out ${
+            isHeroVisible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-6"
+          }`}
+        >
+          For every event — from concerts, festivals, and exhibitions to
+          webinars, trade shows, weddings, conferences, and parties — Oyoyo App
+          makes event planning and ticketing easy.
+        </p>
 
-      <button className="mt-8 md:inline whitespace-nowrap rounded-[10px] text-sm font-medium bg-red-700 text-white hover:bg-black transition-colors px-4 sm:px-6 py-4"><a href="#Start">
-        Get Started for Free
-        </a>
-      </button>
+        <button className="mt-8 md:inline whitespace-nowrap rounded-[10px] text-sm font-medium bg-red-700 text-white hover:bg-black transition-colors px-4 sm:px-6 py-4">
+          <a href="#Start">Get Started for Free</a>
+        </button>
 
-      <div className="mt-10 w-full max-w-[758px] rounded-[20px] overflow-hidden z-10">
-        <MuxPlayer
-          streamType="on-demand"
-          metadataVideoTitle="Setting up a live event"
-          primaryColor="#FFFFFF"
-          secondaryColor="#000000"
-          playbackId="bWom3bfGjaTJ00YGG7TK3CcFd4lpEyrGXRZbLoiR9Ut4"
-        />
-      </div>
-    </section>
+        <div className="mt-10 w-full max-w-[758px] rounded-[20px] overflow-hidden z-10">
+          <MuxPlayer
+            streamType="on-demand"
+            metadataVideoTitle="Setting up a live event"
+            primaryColor="#FFFFFF"
+            secondaryColor="#000000"
+            playbackId="bWom3bfGjaTJ00YGG7TK3CcFd4lpEyrGXRZbLoiR9Ut4"
+          />
+        </div>
+      </section>
 
       {/* Why Choose Us */}
-      <section id="features" className="px-6 py-16 max-w-6xl mx-auto text-center">
+      <section
+        id="features"
+        className="px-6 py-16 max-w-6xl mx-auto text-center"
+      >
         <p className="mt-4 text-sm font-semibold text-red-700 max-w-xl mx-auto">
           Features
         </p>
@@ -282,135 +293,165 @@ export default function Home() {
               desc: "Access a vetted directory of DJs, Ushers, Caterers, Decor Experts, and more based on your event location.",
             },
           ].map(({ img, title, desc }, idx) => (
-          <div
-            key={idx}
-            className="flex flex-col items-center text-center px-2 py-4"
-          >
-          <Image
-            src={img}
-            alt={title}
-            width={45}
-            height={45}
-            className="rounded-sm mb-4"
-          />
-          <h3 className="font-semibold text-lg mb-2">{title}</h3>
-          <p 
-            ref={featureParagraphRef}
-            className={`text-gray-600 mt-2 transition-all duration-700 ease-out ${
-            isFeatureVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-          }`}>{desc}</p>
-        </div>
-        ))}
+            <div
+              key={idx}
+              className="flex flex-col items-center text-center px-2 py-4"
+            >
+              <Image
+                src={img}
+                alt={title}
+                width={45}
+                height={45}
+                className="rounded-sm mb-4"
+              />
+              <h3 className="font-semibold text-lg mb-2">{title}</h3>
+              <p
+                ref={featureParagraphRef}
+                className={`text-gray-600 mt-2 transition-all duration-700 ease-out ${
+                  isFeatureVisible
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-6"
+                }`}
+              >
+                {desc}
+              </p>
+            </div>
+          ))}
         </div>
       </section>
 
-
       {/* Testimonial */}
       <section id="Testimonials" className="px-6 py-16">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-        <div className="text-left">
-          <Image
-            src={current.starsSrc}
-            alt="5 stars"
-            width={100}
-            height={20}
-            className="mb-4"
-          />
-          <p className="text-2xl lg:text-5xl font-medium leading-snug">
-            {current.quote}
-          </p>
-          <div className="flex items-center gap-3 mt-6">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          <div className="text-left">
             <Image
-              src={current.profileSrc}
-              alt={current.name}
-              width={40}
-              height={40}
-              className="rounded-full"
+              src={current.starsSrc}
+              alt="5 stars"
+              width={100}
+              height={20}
+              className="mb-4"
             />
-            <div>
-              <p className="font-semibold">{current.name}</p>
-              <p className="text-sm text-gray-500">{current.role}</p>
+            <p className="text-2xl lg:text-5xl font-medium leading-snug">
+              {current.quote}
+            </p>
+            <div className="flex items-center gap-3 mt-6">
+              <Image
+                src={current.profileSrc}
+                alt={current.name}
+                width={40}
+                height={40}
+                className="rounded-full"
+              />
+              <div>
+                <p className="font-semibold">{current.name}</p>
+                <p className="text-sm text-gray-500">{current.role}</p>
+              </div>
+            </div>
+            <div className="flex gap-4 mt-6">
+              <button
+                onClick={prevTestimonial}
+                className="w-10 h-10 border rounded-full flex items-center justify-center hover:bg-gray-100 transition"
+                aria-label="Previous testimonial"
+              >
+                ←
+              </button>
+              <button
+                onClick={nextTestimonial}
+                className="w-10 h-10 border rounded-full flex items-center justify-center hover:bg-gray-100 transition"
+                aria-label="Next testimonial"
+              >
+                →
+              </button>
             </div>
           </div>
-          <div className="flex gap-4 mt-6">
-            <button
-              onClick={prevTestimonial}
-              className="w-10 h-10 border rounded-full flex items-center justify-center hover:bg-gray-100 transition"
-              aria-label="Previous testimonial"
-            >
-              ←
-            </button>
-            <button
-              onClick={nextTestimonial}
-              className="w-10 h-10 border rounded-full flex items-center justify-center hover:bg-gray-100 transition"
-              aria-label="Next testimonial"
-            >
-              →
-            </button>
+          <div>
+            <Image
+              src={current.bigPicSrc}
+              alt="big pic"
+              width={500}
+              height={400}
+              className="mx-auto"
+            />
           </div>
         </div>
-        <div>
-          <Image
-            src={current.bigPicSrc}
-            alt="big pic"
-            width={500}
-            height={400}
-            className="mx-auto"
-          />
-        </div>
-      </div>
-    </section>
+      </section>
 
       {/* How It Works */}
       <section id="How it Works" className="px-6 py-16 max-w-6xl mx-auto">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-        <div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-8">How It Works</h2>
-          <ul className="space-y-4 text-gray-700">
-            <li className="flex items-center gap-3">
-              <Image src="/tick.png" alt="tick" width={28} height={28}/>
-              <p 
-              ref={worksParagraphRef}
-              className={`text-gray-600 mt-2 transition-all duration-700 ease-out ${
-              isWorksVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-              }`}>Create Your Free Account</p>
-            </li>
-            <li className="flex items-center gap-3">
-              <Image src="/tick.png" alt="tick" width={28} height={28}/>
-              <p 
-              ref={worksParagraphRef}
-              className={`text-gray-600 mt-2 transition-all duration-700 ease-out ${
-              isWorksVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-              }`}>List Your Event &amp; Set Ticket Price</p>
-            </li>
-            <li className="flex items-center gap-3">
-              <Image src="/tick.png" alt="tick" width={28} height={28}/>
-              <p 
-              ref={worksParagraphRef}
-              className={`text-gray-600 mt-2 transition-all duration-700 ease-out ${
-              isWorksVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-              }`}>Start Selling &amp; Track Attendance Easily</p>
-            </li>
-            <li className="flex items-center gap-3">
-              <Image src="/tick.png" alt="tick" width={28} height={28}/>
-              <p 
-              ref={worksParagraphRef}
-              className={`text-gray-600 mt-2 transition-all duration-700 ease-out ${
-              isWorksVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-              }`}>Host Your Event with Full Support</p>
-            </li>
-          </ul>
-          <button className="mt-8 md:inline whitespace-nowrap rounded-[10px] text-sm font-medium bg-red-700 text-white hover:bg-black transition-colors px-4 sm:px-6 py-4"><a href="#Start">
-            Get Started for Free
-            </a>
-          </button>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          <div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-8">
+              How It Works
+            </h2>
+            <ul className="space-y-4 text-gray-700">
+              <li className="flex items-center gap-3">
+                <Image src="/tick.png" alt="tick" width={28} height={28} />
+                <p
+                  ref={worksParagraphRef}
+                  className={`text-gray-600 mt-2 transition-all duration-700 ease-out ${
+                    isWorksVisible
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-6"
+                  }`}
+                >
+                  Create Your Free Account
+                </p>
+              </li>
+              <li className="flex items-center gap-3">
+                <Image src="/tick.png" alt="tick" width={28} height={28} />
+                <p
+                  ref={worksParagraphRef}
+                  className={`text-gray-600 mt-2 transition-all duration-700 ease-out ${
+                    isWorksVisible
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-6"
+                  }`}
+                >
+                  List Your Event &amp; Set Ticket Price
+                </p>
+              </li>
+              <li className="flex items-center gap-3">
+                <Image src="/tick.png" alt="tick" width={28} height={28} />
+                <p
+                  ref={worksParagraphRef}
+                  className={`text-gray-600 mt-2 transition-all duration-700 ease-out ${
+                    isWorksVisible
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-6"
+                  }`}
+                >
+                  Start Selling &amp; Track Attendance Easily
+                </p>
+              </li>
+              <li className="flex items-center gap-3">
+                <Image src="/tick.png" alt="tick" width={28} height={28} />
+                <p
+                  ref={worksParagraphRef}
+                  className={`text-gray-600 mt-2 transition-all duration-700 ease-out ${
+                    isWorksVisible
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-6"
+                  }`}
+                >
+                  Host Your Event with Full Support
+                </p>
+              </li>
+            </ul>
+            <button className="mt-8 md:inline whitespace-nowrap rounded-[10px] text-sm font-medium bg-red-700 text-white hover:bg-black transition-colors px-4 sm:px-6 py-4">
+              <a href="#Start">Get Started for Free</a>
+            </button>
+          </div>
+          <div className="flex justify-center md:justify-end">
+            <Image
+              src="/phone.png"
+              alt="Oyoyo App"
+              width={450}
+              height={400}
+              className="rounded-lg"
+            />
+          </div>
         </div>
-        <div className="flex justify-center md:justify-end">
-          <Image src="/phone.png" alt="Oyoyo App" width={450} height={400} className="rounded-lg"/>
-        </div>
-      </div>
-    </section>
-
+      </section>
 
       {/* Final CTA */}
       <section className="px-6 md:px-[112px]">
@@ -419,22 +460,28 @@ export default function Home() {
             <h2 className="text-xl md:text-2xl font-bold mb-4">
               Ready to Launch Your Event the Smart Way?
             </h2>
-            <p 
+            <p
               ref={ctaParagraphRef}
               className={`text-white mt-2 transition-all duration-700 ease-out ${
-              isCTAVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-              }`}>
+                isCTAVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-6"
+              }`}
+            >
               Don&apos;t just host an event — own it with Oyoyo Events App.
             </p>
-            <p 
+            <p
               ref={ctaParagraphRef}
               className={`text-white mt-2 transition-all duration-700 ease-out ${
-              isCTAVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-              }`}>
+                isCTAVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-6"
+              }`}
+            >
               No hidden fees | No stress | Just success.
             </p>
           </div>
-          <div id='Start' className="flex-shrink-0">
+          <div id="Start" className="flex-shrink-0">
             <button className="mt-2 md:inline whitespace-nowrap rounded-[10px] text-sm font-medium bg-red hover:bg-black transition-colors px-8 sm:px-6 py-4">
               Create an Account
             </button>
@@ -448,151 +495,174 @@ export default function Home() {
           <div className="grid sm:grid-cols-[1fr,auto] gap-8 sm:gap-11 justify-between items-center">
             <div className="flex flex-col gap-8">
               <img
-              alt="Oyoyo Logo"
-              loading="lazy"
-              width={78}
-              height={36}
-              decoding="async"
-              src="oyoyo2.png"
-              style={{ color: "transparent" }}
-            />
-            <div>
-              <div style={{ position: "relative", width: "100%", overflow: "hidden", opacity: 1, transform: "none" }}>
-                <p className="text-white">
-                  A user-friendly platform for event planning, ticketing and streaming.
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-8 flex-wrap">
-              <a className="font-medium text-white" href="/">
-                Home
-              </a>
-              <a className="font-medium text-white" href="#features">
-                Features
-              </a>
-              <a className="font-medium text-white" href="#Testimonials">
-                Testimonials
-              </a>
-              <a className="font-medium text-white" href="#How-it-Works">
-                How it Works
-              </a>
-            </div>
-          </div>
-          <div className="flex flex-col gap-5">
-            <h5 className="text-white">Get the app</h5>
-            <div style={{ position: "relative", width: "fit-content", overflow: "hidden" }}>
-              <div style={{ opacity: 1, transform: "none" }}>
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://apps.apple.com/zm/app/oyoyo-event/id6447293031"
-                >
-                <img
-                  alt="Appstore"
-                  loading="lazy"
-                  width={135}
-                  height={40}
-                  decoding="async"
-                  src="appstore.png"
-                  style={{ color: "transparent" }}
-                />
-              </a>
-            </div>
-          </div>
-          <div style={{ position: "relative", width: "fit-content", overflow: "hidden" }}>
-            <div style={{ opacity: 1, transform: "none" }}>
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://play.google.com/store/apps/details?id=com.lassod.oyoyoevents&hl=vn"
-              >
-              <img
-                alt="Googlestore"
+                alt="Oyoyo Logo"
                 loading="lazy"
-                width={135}
-                height={40}
+                width={78}
+                height={36}
                 decoding="async"
-                src="googleplay.png"
+                src="oyoyo2.png"
                 style={{ color: "transparent" }}
               />
-            </a>
+              <div>
+                <div
+                  style={{
+                    position: "relative",
+                    width: "100%",
+                    overflow: "hidden",
+                    opacity: 1,
+                    transform: "none",
+                  }}
+                >
+                  <p className="text-white">
+                    A user-friendly platform for event planning, ticketing and
+                    streaming.
+                  </p>
+                </div>
+              </div>
+              <div className="flex gap-8 flex-wrap">
+                <a className="font-medium text-white" href="/">
+                  Home
+                </a>
+                <a className="font-medium text-white" href="#features">
+                  Features
+                </a>
+                <a className="font-medium text-white" href="#Testimonials">
+                  Testimonials
+                </a>
+                <a className="font-medium text-white" href="#How-it-Works">
+                  How it Works
+                </a>
+              </div>
+            </div>
+            <div className="flex flex-col gap-5">
+              <h5 className="text-white">Get the app</h5>
+              <div
+                style={{
+                  position: "relative",
+                  width: "fit-content",
+                  overflow: "hidden",
+                }}
+              >
+                <div style={{ opacity: 1, transform: "none" }}>
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://apps.apple.com/zm/app/oyoyo-event/id6447293031"
+                  >
+                    <img
+                      alt="Appstore"
+                      loading="lazy"
+                      width={135}
+                      height={40}
+                      decoding="async"
+                      src="appstore.png"
+                      style={{ color: "transparent" }}
+                    />
+                  </a>
+                </div>
+              </div>
+              <div
+                style={{
+                  position: "relative",
+                  width: "fit-content",
+                  overflow: "hidden",
+                }}
+              >
+                <div style={{ opacity: 1, transform: "none" }}>
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://play.google.com/store/apps/details?id=com.lassod.oyoyoevents&hl=vn"
+                  >
+                    <img
+                      alt="Googlestore"
+                      loading="lazy"
+                      width={135}
+                      height={40}
+                      decoding="async"
+                      src="googleplay.png"
+                      style={{ color: "transparent" }}
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="border-t flex flex-col items-center justify-center border-gray-200 mt-14 pt-10">
+            <p className="text-white">
+              © 2024 Oyoyo events. All rights reserved.
+            </p>
+            <div className="flex gap-5 mt-6">
+              <a
+                href="https://www.youtube.com/channel/UCGBaVqXjFh2fPpOkd2I2-vQ"
+                className="relative w-fit overflow-hidden"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="lucide lucide-youtube text-white"
+                >
+                  <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"></path>
+                  <path d="m10 15 5-3-5-3z"></path>
+                </svg>
+              </a>
+              <a
+                href="https://www.facebook.com/oyoyoapp"
+                className="relative w-fit overflow-hidden"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="lucide lucide-facebook text-white"
+                >
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                </svg>
+              </a>
+              <a
+                href="https://www.instagram.com/oyoyoeventsapp"
+                className="relative w-fit overflow-hidden"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="lucide lucide-instagram text-white"
+                >
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div className="border-t flex flex-col items-center justify-center border-gray-200 mt-14 pt-10">
-      <p className="text-white">© 2024 Oyoyo events. All rights reserved.</p>
-      <div className="flex gap-5 mt-6">
-        <a
-          href="https://www.youtube.com/channel/UCGBaVqXjFh2fPpOkd2I2-vQ"
-          className="relative w-fit overflow-hidden"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="lucide lucide-youtube text-white"
-        >
-        <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"></path>
-        <path d="m10 15 5-3-5-3z"></path>
-        </svg>
-        </a>
-        <a
-          href="https://www.facebook.com/oyoyoapp"
-          className="relative w-fit overflow-hidden"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="lucide lucide-facebook text-white"
-        >
-        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-        </svg>
-        </a>
-        <a
-          href="https://www.instagram.com/oyoyoeventsapp"
-          className="relative w-fit overflow-hidden"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="lucide lucide-instagram text-white"
-        >
-        <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
-        </svg>
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
-</main>
-);
+    </main>
+  );
 }
