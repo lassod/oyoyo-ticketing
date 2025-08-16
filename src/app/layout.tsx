@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "../../globals.css";
 import { Toaster } from "@/components/ui/toaster";
+import "react-range-slider-input/dist/style.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
   title: "Oyoyo Events - Transform Your Event Planning",
@@ -16,10 +24,15 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="font-Compact">
+    <html lang="en" className={inter.variable}>
+      <head>
+        <script src="https://js.paystack.co/v1/inline.js"></script>
+      </head>
+
       <body className="font-inter">
-        <Toaster />
         {children}
+        {/* <Providers>{children}</Providers> */}
+        <Toaster />
       </body>
     </html>
   );

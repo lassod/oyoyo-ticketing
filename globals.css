@@ -134,21 +134,21 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-gray-200 outline-ring/50;
   }
 
   body {
     @apply bg-background text-foreground;
   }
 
-  @font-face {
+  /* @font-face {
     font-family: "Compact";
     src: url("/fonts/fonnts.com-SF_Compact_Rounded_Regular.otf")
         format("opentype"),
       url("/fonts/fonnts.com-SF_Compact_Rounded_Regular.ttf") format("truetype");
     font-style: normal;
     font-display: swap;
-  }
+  } */
 
   /* GLOBAL STYLES */
   * {
@@ -158,7 +158,7 @@
   }
 
   h1 {
-    @apply font-[900] text-[36px] leading-[1.5] text-left md:text-[80px] md:leading-[80px];
+    @apply font-[900] text-[25px] sm:text-[36px] leading-[1.5] text-left md:text-[40px] md:leading-[50px];
   }
   h2 {
     @apply font-[900] text-[25px] leading-[1.5] md:text-[62px] md:leading-[72px];

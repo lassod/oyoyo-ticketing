@@ -7,11 +7,11 @@ import { cn } from "@/lib/utils";
 import { XCircle } from "lucide-react";
 
 const buttonVariants = cva(
-  "flex items-center justify-center whitespace-nowrap rounded-[30px] text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "flex items-center justify-center whitespace-nowrap rounded-xl text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
-        default: "bg-red-700 text-primary-foreground hover:bg-primary/90",
+        default: "bg-red-700 text-white hover:bg-red-700/90",
         secondary:
           "bg-white text-black border border-gray-300 hover:bg-primary/90 hover:text-white",
         destructive:

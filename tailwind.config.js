@@ -81,11 +81,9 @@ export const theme = {
     },
     backgroundImage: {
       logo: "url('./src/app/components/assets/images/Oyoyo.svg')",
-      lines: "url('./src/app/components/assets/images/Bg-pattern-oyoyo.png')",
     },
     fontFamily: {
-      inter: ["Compact", "Inter"],
-      bastliga: ['"Compact"', ...defaultTheme.fontFamily.sans],
+      inter: ["Inter", "sans-serif"],
     },
   },
 };
