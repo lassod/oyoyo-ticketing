@@ -1,5 +1,6 @@
 "use client";
 import Download from "@/components/landing/Download";
+import { EmailPopup } from "@/components/landing/EmailPopup";
 import Features from "@/components/landing/Features";
 import Footer from "@/components/landing/Footer";
 import Header from "@/components/landing/Header";
@@ -16,7 +17,8 @@ const Home = () => {
       <Testimonial />
       <Works />
       <Download />
-      <Footer className="top-[186px] md:top-[586px]" />
+      <Footer />
+      <EmailPopup />
     </main>
   );
 };

@@ -3,10 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { FacebookIcon, Instagram, Youtube } from "lucide-react";
 import { Reveal3, Reveal5 } from "./Text";
+import { LandingContainer } from "../ui/containers";
 
-const Footer = ({ className }: { className?: string }) => {
+const Footer = () => {
   return (
-    <div className={`bg-red-700 relative ${className}`}>
+    <LandingContainer className="bg-red-800">
       <div className="max-w-screen-xl lg:px-8 xl:px-24 px-4 py-10 mx-auto">
         <div className="grid sm:grid-cols-[1fr,auto] gap-8 sm:gap-11 justify-between items-center">
           <div className="flex flex-col gap-8">
@@ -89,7 +90,7 @@ const Footer = ({ className }: { className?: string }) => {
           </div>
         </div>
       </div>
-    </div>
+    </LandingContainer>
   );
 };
 
