@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "../../globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import "react-range-slider-input/dist/style.css";
+import Providers from "./providers";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -30,8 +31,8 @@ export default async function RootLayout({
       </head>
 
       <body className="font-inter">
-        {children}
-        {/* <Providers>{children}</Providers> */}
+        {/* {children} */}
+        <Providers>{children}</Providers>
         <Toaster />
       </body>
     </html>

@@ -1,3 +1,4 @@
 {
+  "/api/emailoctopus/subscribe/route": "app/api/emailoctopus/subscribe/route.js",
   "/page": "app/page.js"
 }

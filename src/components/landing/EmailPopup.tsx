@@ -17,6 +17,7 @@ import {
 import { Mail, X } from "lucide-react";
 import { useToast } from "../ui/use-toast";
 import { motion, AnimatePresence } from "framer-motion";
+import { useSubscribeEmail } from "@/hooks/email";
 
 const emailSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -26,7 +27,6 @@ type EmailFormData = z.infer<typeof emailSchema>;
 
 export function EmailPopup() {
   const [isOpen, setIsOpen] = useState(false);
-  const { toast } = useToast();
 
   const {
     register,
@@ -37,14 +37,14 @@ export function EmailPopup() {
     resolver: zodResolver(emailSchema),
   });
 
-  const onSubmit = async (data: EmailFormData) => {
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+  const subscribe = useSubscribeEmail();
 
-    console.log("Email submitted:", data.email);
-    toast({
-      title: "Success!",
-      description: "We'll be in touch soon with more information.",
+  const onSubmit = async (data: EmailFormData) => {
+    await subscribe.mutateAsync({
+      email: data.email,
+      tags: ["landing-popup"],
+      fields: { Source: "EmailPopup" }, // must exist as a field in EmailOctopus to be stored
+      mode: "single", // or "double" for double opt-in
     });
 
     reset();

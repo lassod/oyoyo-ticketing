@@ -3,7 +3,6 @@ import React from "react";
 // import { useSidebar } from "./sidebar/sidebar";
 import Image from "next/image";
 import { Loader2 } from "lucide-react";
-import Logo from "@/app/components/assets/images/Oyoyo.svg";
 
 function Skeleton({
   className,
@@ -122,7 +121,7 @@ const LogoLoader = ({ type }: { type?: number }) => {
     >
       <div className="flex flex-col gap-2 items-center">
         <Image
-          src={Logo}
+          src="/images/Logo.svg"
           alt="Logo"
           className="max-w-[200px] animate-pulse"
           width={500}

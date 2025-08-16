@@ -7,8 +7,8 @@ import { LandingContainer } from "../ui/containers";
 
 const Footer = () => {
   return (
-    <LandingContainer className="bg-red-800">
-      <div className="max-w-screen-xl lg:px-8 xl:px-24 px-4 py-10 mx-auto">
+    <LandingContainer className="bg-red-800 max-w-full mt-10">
+      <div className="max-w-[1400px] lg:px-8 xl:px-24 px-4 py-10 mx-auto">
         <div className="grid sm:grid-cols-[1fr,auto] gap-8 sm:gap-11 justify-between items-center">
           <div className="flex flex-col gap-8">
             <Image
