@@ -10,5 +10,11 @@
     "files": [
       "static/chunks/_app-pages-browser_node_modules_tanstack_query-devtools_build_DevtoolsPanelComponent_JZI2RDCT_js.js"
     ]
+  },
+  "../node_modules/react-player/lib/ReactPlayer.js -> ./Preview": {
+    "id": "../node_modules/react-player/lib/ReactPlayer.js -> ./Preview",
+    "files": [
+      "static/chunks/reactPlayerPreview.js"
+    ]
   }
 }

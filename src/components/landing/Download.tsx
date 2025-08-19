@@ -1,8 +1,6 @@
-import Image from "next/image";
 import React from "react";
 import Link from "next/link";
 import { LandingContainer, LandingWrapper } from "@/components/ui/containers";
-import { Reveal3, Reveal5 } from "./Text";
 import { Button } from "../ui/button";
 
 const Download = ({ className }: { className?: string }) => {
@@ -22,8 +20,15 @@ const Download = ({ className }: { className?: string }) => {
               No hidden fees | No stress | Just success.
             </p>
           </div>
-          <div id="Start" className="flex-shrink-0">
-            <Button variant="secondary">Create an Account</Button>
+
+          <div className="flex-shrink-0">
+            <Link
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://oyoyoapp.com/auth/signup"
+            >
+              <Button variant="secondary">Create an Account</Button>
+            </Link>
           </div>
         </LandingWrapper>
       </section>

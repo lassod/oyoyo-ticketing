@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Reveal1, Reveal3 } from "./Text";
-import MuxPlayer from "@mux/mux-player-react";
+import ReactPlayer from "react-player/youtube";
 
 const HeroPage = () => {
   return (
@@ -27,14 +27,21 @@ const HeroPage = () => {
           <Button>Get Started for Free</Button>
         </Link>
 
-        <MuxPlayer
-          streamType="on-demand"
-          metadataVideoTitle="Setting up a live event"
-          primaryColor="#FFFFFF"
-          secondaryColor="#000000"
-          playbackId="bWom3bfGjaTJ00YGG7TK3CcFd4lpEyrGXRZbLoiR9Ut4"
-          className="mt-10 w-full max-w-[1258px] h-[250px] sm:h-[400px] md:h-[500px] lg:h-[550px] aspect-video rounded-[20px] overflow-hidden z-10"
-        />
+        <div className="mt-10 w-full max-w-[1258px] h-[250px] sm:h-[400px] md:h-[500px] lg:h-[550px] aspect-video rounded-[20px] overflow-hidden z-10">
+          <ReactPlayer
+            url="https://youtu.be/y3-E4v29u3E?si=VK4kHi6YO12gg39q"
+            controls={true}
+            width="100%"
+            height="100%"
+            config={{
+              playerVars: {
+                modestbranding: 1,
+                showinfo: 0,
+                rel: 0,
+              },
+            }}
+          />
+        </div>
       </div>
     </section>
   );
