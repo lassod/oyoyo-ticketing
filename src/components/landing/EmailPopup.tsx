@@ -14,7 +14,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Mail, X } from "lucide-react";
+import { Mail, MessageCircleQuestion, X } from "lucide-react";
 import { useToast } from "../ui/use-toast";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSubscribeEmail } from "@/hooks/email";
@@ -82,7 +82,11 @@ export function EmailPopup() {
           }}
           whileTap={{ scale: 0.95 }}
         >
-          <Button onClick={() => setIsOpen(true)}>
+          <Button className="h-14" onClick={() => setIsOpen(true)}>
+            <div className="flex items-start flex-col">
+              <div>Planning an Event or</div>
+              <div>Struggling to Sell Tickets?</div>
+            </div>
             <motion.div
               animate={{ rotate: [0, 10, -10, 0] }}
               transition={{
@@ -92,9 +96,8 @@ export function EmailPopup() {
                 delay: 0.5,
               }}
             >
-              <Mail className="w-5 h-5 mr-2" />
+              <MessageCircleQuestion className="w-7 h-7 ml-2" />
             </motion.div>
-            Want to know more?
           </Button>
         </motion.div>
       </motion.div>
@@ -112,11 +115,11 @@ export function EmailPopup() {
               >
                 <DialogHeader className="p-3 md:p-5">
                   <DialogTitle className="text-xl font-semibold">
-                    Stay in the loop!
+                    Planning an Event or Struggling to Sell Tickets?
                   </DialogTitle>
                   <DialogDescription>
-                    Enter your email address and we'll send you more information
-                    about our latest updates and features.
+                    Discover 7 proven ways to sell your tickets fast and make
+                    your event a success.
                   </DialogDescription>
                 </DialogHeader>
 
@@ -156,7 +159,7 @@ export function EmailPopup() {
                       disabled={isSubmitting}
                       className="flex-1"
                     >
-                      {isSubmitting ? "Submitting..." : "Subscribe"}
+                      {isSubmitting ? "Submitting..." : "Yes! I Want the Guide"}
                     </Button>
                     <Button
                       type="button"
