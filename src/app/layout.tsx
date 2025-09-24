@@ -4,6 +4,7 @@ import "../../globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import "react-range-slider-input/dist/style.css";
 import Providers from "./providers";
+import Script from "next/script";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -27,9 +28,26 @@ export default async function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <head>
-        <script src="https://js.paystack.co/v1/inline.js"></script>
-      </head>
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=GTM-PFVXR8F3`}
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
+        gtag('config', 'GTM-PFVXR8F3', {
+          page_path: window.location.pathname,
+        });
+      `,
+          }}
+        />
+      </head>
       <body className="font-inter">
         {/* {children} */}
         <Providers>{children}</Providers>
