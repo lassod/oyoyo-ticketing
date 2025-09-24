@@ -47,8 +47,10 @@ export default async function RootLayout({
       </head>
       <body className="font-inter">
         {/* {children} */}
-        <GA4PageviewListener />
-        <Providers>{children}</Providers>
+        <Providers>
+          <GA4PageviewListener />
+          {children}
+        </Providers>
         <Toaster />
       </body>
     </html>
